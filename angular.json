@@ -1,0 +1,209 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "abc-design-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/abc-design-app",
+      "sourceRoot": "projects/abc-design-app/src",
+      "prefix": "abc",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/abc-design-app",
+            "index": "projects/abc-design-app/src/index.html",
+            "main": "projects/abc-design-app/src/main.ts",
+            "polyfills": "projects/abc-design-app/src/polyfills.ts",
+            "tsConfig": "projects/abc-design-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/abc-design-app/src/favicon.ico",
+              "projects/abc-design-app/src/assets"
+            ],
+            "styles": [
+              "projects/abc-design-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/abc-design-app/src/environments/environment.ts",
+                  "with": "projects/abc-design-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "abc-design-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "abc-design-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "abc-design-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/abc-design-app/src/test.ts",
+            "polyfills": "projects/abc-design-app/src/polyfills.ts",
+            "tsConfig": "projects/abc-design-app/tsconfig.spec.json",
+            "karmaConfig": "projects/abc-design-app/karma.conf.js",
+            "assets": [
+              "projects/abc-design-app/src/favicon.ico",
+              "projects/abc-design-app/src/assets"
+            ],
+            "styles": [
+              "projects/abc-design-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/abc-design-app/tsconfig.app.json",
+              "projects/abc-design-app/tsconfig.spec.json",
+              "projects/abc-design-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/abc-design-app/e2e/protractor.conf.js",
+            "devServerTarget": "abc-design-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "abc-design-app:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "abc-core-forms": {
+      "projectType": "library",
+      "root": "projects/abc-core-forms",
+      "sourceRoot": "projects/abc-core-forms/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/abc-core-forms/tsconfig.lib.json",
+            "project": "projects/abc-core-forms/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/abc-core-forms/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/abc-core-forms/src/test.ts",
+            "tsConfig": "projects/abc-core-forms/tsconfig.spec.json",
+            "karmaConfig": "projects/abc-core-forms/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/abc-core-forms/tsconfig.lib.json",
+              "projects/abc-core-forms/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "abc-core-ui": {
+      "projectType": "library",
+      "root": "projects/abc-core-ui",
+      "sourceRoot": "projects/abc-core-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/abc-core-ui/tsconfig.lib.json",
+            "project": "projects/abc-core-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/abc-core-ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/abc-core-ui/src/test.ts",
+            "tsConfig": "projects/abc-core-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/abc-core-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/abc-core-ui/tsconfig.lib.json",
+              "projects/abc-core-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }},
+  "defaultProject": "abc-design-app"
+}
+
