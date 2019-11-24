@@ -25,11 +25,11 @@
       "abc-core-forms/*": [
         "dist/abc-core-forms/*"
       ],
-      "abc-core-ui": [
-        "dist/abc-core-ui"
+      "@abc-foundry/abc-core-ui": [
+        "dist/@abc-foundry/abc-core-ui"
       ],
-      "abc-core-ui/*": [
-        "dist/abc-core-ui/*"
+      "@abc-foundry/abc-core-ui/*": [
+        "dist/@abc-foundry/abc-core-ui/*"
       ]
     }
   },

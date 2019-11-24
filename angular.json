@@ -129,6 +129,11 @@
       "root": "projects/abc-core-forms",
       "sourceRoot": "projects/abc-core-forms/src",
       "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -164,11 +169,16 @@
         }
       }
     },
-    "abc-core-ui": {
+    "@abc-foundry/abc-core-ui": {
       "projectType": "library",
       "root": "projects/abc-core-ui",
       "sourceRoot": "projects/abc-core-ui/src",
       "prefix": "lib",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

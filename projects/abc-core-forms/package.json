@@ -1,5 +1,5 @@
 {
-  "name": "abc-core-forms",
+  "name": "@abc-foundry/abc-core-forms",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^9.0.0-rc.3",
